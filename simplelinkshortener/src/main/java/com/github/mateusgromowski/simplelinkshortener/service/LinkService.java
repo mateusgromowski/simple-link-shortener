@@ -2,9 +2,12 @@ package com.github.mateusgromowski.simplelinkshortener.service;
 
 import java.util.NoSuchElementException;
 
+import org.springframework.stereotype.Service;
+
 import com.github.mateusgromowski.simplelinkshortener.model.Link;
 import com.github.mateusgromowski.simplelinkshortener.repository.LinkRepository;
 
+@Service
 public class LinkService {
     private LinkRepository repository;
 
