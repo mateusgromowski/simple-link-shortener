@@ -20,11 +20,11 @@ public class LinkService {
                 .orElseThrow(() -> new NoSuchElementException("There's no link of " + id + " id."));
     }
 
-    public Link create(String url) {
+    public Link create(Link link) {
+        String url = link.getUrl();
         if (repository.existsByUrl(url)) {
             return repository.findByUrl(url);
         }
-        Link link = new Link(url);
         return repository.save(link);
     }
 

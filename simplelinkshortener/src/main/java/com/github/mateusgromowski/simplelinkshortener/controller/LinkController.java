@@ -25,7 +25,7 @@ public class LinkController {
     }
 
     @PostMapping
-    public ResponseEntity<Link> create(@RequestBody String url) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(service.create(url));
+    public ResponseEntity<Link> create(@RequestBody Link link) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(service.create(link));
     }
 }
