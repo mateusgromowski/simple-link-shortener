@@ -1,5 +1,7 @@
 package com.github.mateusgromowski.simplelinkshortener.controller;
 
+import java.net.URI;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,8 +24,10 @@ public class LinkController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Link> findById(@PathVariable Long id) {
-        return ResponseEntity.ok(service.findById(id));
+    public ResponseEntity<Void> redirect(@PathVariable Long id) {
+        Link link = service.findById(id);
+        System.out.println(link.getUrl());
+        return ResponseEntity.status(HttpStatus.FOUND).location(URI.create(link.getUrl())).build();
     }
 
     @PostMapping
