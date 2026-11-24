@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.github.mateusgromowski.simplelinkshortener.model.Link;
 import com.github.mateusgromowski.simplelinkshortener.service.LinkService;
 
+import jakarta.validation.Valid;
+
 @RestController
 public class LinkController {
     private LinkService service;
@@ -25,7 +27,7 @@ public class LinkController {
     }
 
     @PostMapping
-    public ResponseEntity<Link> create(@RequestBody Link link) {
+    public ResponseEntity<Link> create(@RequestBody @Valid Link link) {
         return ResponseEntity.status(HttpStatus.CREATED).body(service.create(link));
     }
 }
